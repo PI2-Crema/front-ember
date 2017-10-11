@@ -46,11 +46,13 @@
           <div class="panel-body">
               <div class="row">
                   <div class="col-lg-6">
-                    {{#each model.sensorRecord as |register|}}
+                    {{!-- {{#each model.sensorRecord as |register|}}
                           <div class="form-group">
                               {{format-number register.value precision=2}} - {{moment-format register.createdAt 'DD/MM/YYYY - h:mm:ss a' allowEmpty=true}}
                           </div>
-                    {{/each}}
+                    {{/each}} --}}
+
+                  {{sensor-chart}}
             </div>
         </div>
       </div>
