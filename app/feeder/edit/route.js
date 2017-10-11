@@ -3,26 +3,25 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model(params) {
     return {
-        lot: this.store.findRecord('lot', params.lot_id),
-        foods: this.store.findAll('food')
+        feeder: this.store.findRecord('feeder', params.feeder_id),
+        tanks: this.store.findAll('tank')
     }
   },
 
   actions: {
-    async save(lot) {
-      const l = await lot
-      l.save().then(() => {
-        this.transitionTo('lots')
+    async save(feederPromise) {
+      const feeder = await feederPromise
+      feeder.save().then(() => {
+        this.transitionTo('feeder')
       })
     },
 
     async willTransition(transition) {
-      const model = await this.controller.get('model.lot');
-
-      if (model.get('hasDirtyAttributes')) {
+      if (this.get('controller.model.feeder.hasDirtyAttributes')) {
         let confirmation = confirm("Vc ainda não salvou as mudanças. Deseja sair mesmo assim?");
 
         if (confirmation) {
+          const model = await this.controller.get('model.feeder')
           model.rollbackAttributes();
         } else {
           transition.abort();
