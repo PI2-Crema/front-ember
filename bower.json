@@ -1,0 +1,8 @@
+{
+  "name": "front",
+  "dependencies": {
+    "polymer": "1.9.1",
+    "webcomponentsjs": "0.7.24",
+    "paper-date-picker": "bendavis78/paper-date-picker#^1.2.2"
+  }
+}
