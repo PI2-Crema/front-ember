@@ -7,5 +7,6 @@ export default DS.Model.extend({
   isWorking: DS.attr('boolean', {defaultValue: true}),
   failRegistration: DS.attr('date'),
   feeder: DS.belongsTo('feeder'),
-  sensorRecord: DS.hasMany('sensor-record')
+  sensorRecord: DS.hasMany('sensor-record'),
+  sensorErrors: DS.hasMany('sensor-error')
 });

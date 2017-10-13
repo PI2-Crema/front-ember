@@ -1,0 +1,22 @@
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #737373;
+
+  .no-data__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h5 {
+      text-align: center;
+    }
+  }
+
+  .no-data__content {
+    padding-top: 15px;
+
+  }
+}

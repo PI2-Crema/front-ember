@@ -1,5 +1,55 @@
 @import 'bootstrap';
 @import "ember-power-select";
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
+
+//tools
+@import 'tools/attention.scss';
 
 // components
-@import 'components/titles.scss'
+@import 'components/titles.scss';
+@import 'components/panel.scss';
+@import 'components/no_data.scss';
+
+
+.fa-80x {
+  font-size: 80px;
+}
+
+
+.feeder-level {
+  padding: 5px 15px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.feeder-level--low {
+  background: #d9534f;
+}
+
+.feeder-level--medium {
+  background: #f0ad4e;
+}
+
+.feeder-level--height {
+  background: #5cb85c;
+}
+
+a {
+  cursor: pointer;
+}
+
+.actions-inline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a.reload {
+    margin-right: 10px;
+  }
+}
+
+table.table-middle > tbody > tr > td {
+     vertical-align: middle;
+}

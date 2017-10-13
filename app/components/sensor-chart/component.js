@@ -1,40 +1,42 @@
 import Ember from 'ember';
-
-function newDate(days) {
-  return moment().add(days, 'd').toDate();
-}
+import ENV from 'front/config/environment'
 
 export default Ember.Component.extend({
   type: 'line',
-  options: {
-    title: {
-      display: true,
-      text: 'Some title'
-    },
-    scales: {
-      xAxes: [{
-        type: "time",
-        time: {
-          format: 'MM/DD/YYYY HH:mm',
-          // round: 'day'
-          tooltipFormat: 'll HH:mm'
-        },
-        scaleLabel: {
-          display: true,
-          labelString: 'Data'
-        }
-      }, ],
-      yAxes: [{
-        scaleLabel: {
-          display: true,
-          labelString: 'Valor'
-        }
-      }]
-    }
-  },
+  options: Ember.computed('title', function() {
+    return {
+      title: {
+        display: true,
+        text: this.get('title')
+      },
+      scales: {
+        xAxes: [{
+          type: "time",
+          time: {
+            format: 'MM/DD/YYYY HH:mm',
+            // round: 'day'
+            tooltipFormat: 'll HH:mm'
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Data'
+          }
+        }, ],
+        yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Valor'
+          }
+        }]
+      }
+    };
+  }),
 
-  data: Ember.computed('targetID', async function() {
-    const plotData = await Ember.$.getJSON('http://localhost:3000/sensors/formated_records_data/' + this.get('targetID'));
+  data: Ember.computed('targetID', 'filterType', async function() {
+    const baseURL = ENV.apiURL;
+    const path = `/sensors/formated_records_data/${this.get('targetID')}`;
+    const query = this.get('filterType') ? `?filterType=${this.get('filterType')}` : ''
+    const plotData = await Ember.$.getJSON(baseURL + path + query);
 
     return {
       labels: plotData.x.map(function(dateString) {
@@ -48,6 +50,11 @@ export default Ember.Component.extend({
         }
       ]
     }
-  })
+  }),
 
+  actions: {
+    filter(filterType) {
+      this.set('filterType', filterType);
+    }
+  }
 });

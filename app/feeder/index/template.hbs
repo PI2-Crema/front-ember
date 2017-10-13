@@ -1,43 +1,38 @@
 <div class="col-lg-12">
   <div class="row">
     <div class="panel panel-default">
-        <div class="panel-heading">
-          Alimentadores registrados
+        <div class="panel-heading panel-action-inline">
+          Alimentadores registrados ({{model.readyFeeders.length}})
           {{#link-to 'feeder.new' class="btn btn-default btn-primary"}}Criar novo Alimentador{{/link-to}}
         </div>
-        <!-- /.panel-heading -->
+
         <div class="panel-body">
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>Alimentador ({{model.length}})</th>
-                            <th>Nome</th>
-                            <th>Tanque</th>
-                            <th>Nível de alimento</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      {{#each model as |feeder|}}
-                        <tr>
-                            <td>{{feeder.id}}</td>
-                            <td>{{feeder.nickname}}</td>
-                            <td>{{feeder.tank.name}}</td>
-                            <td>{{parse-nivel feeder.nivel}}</td>
-                            <td style="text-align: center">
-                              {{#link-to 'feeder.show' feeder class="btn btn-default btn-xs"}}Ver{{/link-to}}
-                              {{#link-to 'feeder.edit' feeder.id class="btn btn-default btn-xs"}}Editar{{/link-to}}
-                              <button class="btn btn-default btn-xs btn-danger" {{action 'delete' feeder bubbles=false}}>Delete</button>
-                            </td>
-                        </tr>
-                      {{/each}}
-                    </tbody>
-                </table>
-            </div>
-            <!-- /.table-responsive -->
+          {{#each model.readyFeeders as |feeder|}}
+            {{feeder-item feeder=feeder needRefresh=(route-action 'needRefresh')}}
+          {{else}}
+            {{#no-data}}
+              <p>Ligue um alimentador na rede. Ele irá aparecer na sessão de configuração.Em seguida você deve configurá-lo.</p>
+            {{/no-data}}
+          {{/each}}
         </div>
-        <!-- /.panel-body -->
     </div>
   </div>
 </div>
+
+{{#if model.needSetupFeeders}}
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="panel panel-default">
+          <div class="panel-heading panel-action-inline">
+            Alimentadores aguardando configuração ({{model.needSetupFeeders.length}})
+          </div>
+
+          <div class="panel-body">
+            {{#each model.needSetupFeeders as |feeder|}}
+              {{feeder-item feeder=feeder needRefresh=(route-action 'needRefresh')}}
+            {{/each}}
+          </div>
+      </div>
+    </div>
+  </div>
+{{/if}}

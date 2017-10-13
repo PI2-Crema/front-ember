@@ -10,20 +10,22 @@
                       <form role="form" {{action "save" model.lot on="submit"}}>
                           <div class="form-group">
                               <label>Preço (R$)</label>
-                              {{input type="number" step="0.01" value=model.lot.price class="form-control" placeholder="Nome da ração"}}
+                              {{input type="number" step="0.01" value=model.lot.price class="form-control" placeholder=""}}
                           </div>
                           <div class="form-group">
                               <label>Validade</label>
-                              {{pikaday-input onSelection=(action (mut model.lot.validity)) format="DD/MM/YYYY"}}
+                              {{pikaday-input onSelection=(action (mut model.lot.validity)) format="DD/MM/YYYY" class="form-control"}}
                           </div>
                           <div class="form-group">
                               <label>Data da Compra</label>
-                              {{pikaday-input onSelection=(action (mut model.lot.buy_date)) format="DD/MM/YYYY"}}
+                              {{pikaday-input onSelection=(action (mut model.lot.buy_date)) format="DD/MM/YYYY" class="form-control"}}
                           </div>
                           <div class="form-group">
                               <label>Quantidade(kg)</label>
-                              {{input type="number" step="0.01" value=model.lot.quantity class="form-control" placeholder="Nome da ração"}}
+                              {{input type="number" step="0.01" value=model.lot.quantity class="form-control" placeholder=""}}
                           </div>
+                          <div class="form-group">
+                            <label>Tipo da ração</label>
                           {{#power-select
                             options=model.foods
                             selected=model.lot.food
@@ -32,6 +34,7 @@
                           }}
                              <strong>{{food.name}}</strong>
                           {{/power-select}}
+                          </div>
                           <button type="submit" class="btn btn-default">Cadastrar</button>
                       </form>
             </div>

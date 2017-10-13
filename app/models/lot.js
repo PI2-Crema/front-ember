@@ -7,5 +7,6 @@ export default DS.Model.extend({
   quantity: DS.attr('number'),
   current_quantity: DS.attr('number'),
   end_date: DS.attr('date'),
-  food: DS.belongsTo('food')
+  food: DS.belongsTo('food'),
+  consumptions: DS.hasMany('consumption')
 });

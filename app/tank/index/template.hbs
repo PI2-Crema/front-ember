@@ -1,7 +1,7 @@
 <div class="col-lg-12">
   <div class="row">
     <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading panel-action-inline">
           Tanques registrados
           {{link-to 'Novo Tanque' 'tank.new' class="btn btn-default btn-primary"}}
         </div>
@@ -22,8 +22,8 @@
                             <td>{{tank.id}}</td>
                             <td>{{tank.name}}</td>
                             <td>
-                              {{#link-to 'tank.show' tank class="btn btn-default btn-xs"}}Ver{{/link-to}}
-                              {{#link-to 'tank.edit' tank class="btn btn-default btn-xs"}}Editar{{/link-to}}
+                              {{#link-to 'tank.show' tank.id class="btn btn-default btn-xs"}}Ver{{/link-to}}
+                              {{#link-to 'tank.edit' tank.id class="btn btn-default btn-xs"}}Editar{{/link-to}}
                               <button class="btn btn-default btn-xs btn-danger" {{action 'delete' tank bubbles=false}}>Delete</button>
                             </td>
                         </tr>

@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'canvas',
   setup: false,
 
   /**
@@ -11,12 +10,13 @@ export default Ember.Component.extend({
    * when getting wrong and/or missing values.
    */
   didInsertElement() {
-    // debugger;
-    var canvas  = this.get('element');
+
+    var data = this.get('data');
+    var canvas  = this.$().find('canvas')[0];
     var context = canvas.getContext('2d');
 
     canvas.width  = $(canvas).parent().width();
-    canvas.height = $(canvas).parent().height();
+    canvas.height = $(canvas).parent().height() < 300 ? 300 : $(canvas).parent().height();
 
     var type = this.get('type').charAt(0).toUpperCase() + this.get('type').slice(1);
     if(!type.match(/(Line|Bar|Radar|PolarArea|Pie|Doughnut)/)) type = "Line";
@@ -28,8 +28,6 @@ export default Ember.Component.extend({
       '_context': context,
       '_options': options
     });
-
-    var data = this.get('data');
 
     if (data instanceof Promise) {
       data.then((resolvedData) => {
@@ -68,8 +66,28 @@ export default Ember.Component.extend({
    */
   chartUpdate: Ember.observer('data', 'options', function() {
     if(this.get('update') === true && this.get('setup') == true){
-      this.set('_data', this.get('data'))
+      this.updateDataValue();
+    }
+  }),
+
+  updateDataValue() {
+    var data = this.get('data');
+
+    if (data instanceof Promise) {
+      data.then((resolvedData) => {
+        this.set('_data', resolvedData);
+        const chart = this.get('_chart');
+        chart.destroy();
+        // debugger;
+        this.chartRender();
+      });
+    } else {
+      this.set('_data', data);
+      const chart = this.get('_chart');
+      chart.destroy();
       this.chartRender();
     }
-  })
+  }
+
+
 });

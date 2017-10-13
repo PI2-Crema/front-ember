@@ -1,1 +1,31 @@
+<div class="form-group form-inline">
+  <label>Filtros</label>
+  <p>
+    <button
+      type="button"
+      class="btn btn-xs btn-default"
+      {{action 'filter' 'all'}}>
+        Todos
+    </button>
+    <button
+      type="button"
+      class="btn btn-xs btn-default"
+      {{action 'filter' 'lastDay'}}>
+        Último dia
+    </button>
+    <button
+      type="button"
+      class="btn btn-xs btn-default"
+      {{action 'filter' 'lastWeek'}}>
+        Último semana
+    </button>
+    <button
+      type="button"
+      class="btn btn-xs btn-default"
+      {{action 'filter' 'lastMonth'}}>
+        Último mês
+    </button>
+  </p>
+</div>
+
 {{line-chart data=data options=options update=true type='line'}}

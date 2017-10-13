@@ -21,6 +21,9 @@ Router.map(function() {
     this.route('show', { path: '/show/:tank_id' });
     this.route('edit', { path: '/edit/:tank_id' });
     this.route('new');
+    this.route('new-cluster', { path: '/tratos/:tank_id' });
+    this.route('metrics-register', { path: '/metricas/:tank_id/:cluster_id' });
+    this.route('moviment-register', { path: '/extrato/:tank_id/:cluster_id' });
   });
   this.route('feeder', function() {
     this.route('show', { path: '/show/:feeder_id' });
@@ -31,6 +34,12 @@ Router.map(function() {
     this.route('show', { path: '/show/:sensor_id' });
     this.route('new');
     this.route('edit', { path: '/edit/:sensor_id' });
+  });
+  this.route('reload', { path: 'reload/:feeder_id' });
+  this.route('fish', function() {
+    this.route('show',{ path: '/show/:fish_type_id' });
+    this.route('new');
+    this.route('edit',{ path: '/edit/:fish_type_id' });
   });
 });
 
