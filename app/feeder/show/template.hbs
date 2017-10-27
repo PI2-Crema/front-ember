@@ -6,6 +6,7 @@
         <span class="actions-inline">
           {{#link-to 'reload' model.id class="btn reload btn-primary"}}Registrar Recarga{{/link-to}}
           {{feeder-level nivel=model.nivel}}
+          <button {{action 'sendSettings' model}} class="btn reload btn-secondary">Enviar Configuração</button>
         </span>
 
       </div>

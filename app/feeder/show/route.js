@@ -9,6 +9,10 @@ export default Ember.Route.extend({
   },
 
   actions: {
+    sendSettings(feeder) {
+      Ember.$.get('http://localhost:3000/feeders/send_settings/' + feeder.get('id'))
+    },
+
     showLot(id) {
       this.transitionTo('lots.show', id);
     },
