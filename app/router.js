@@ -41,6 +41,7 @@ Router.map(function() {
     this.route('new');
     this.route('edit',{ path: '/edit/:fish_type_id' });
   });
+  this.route('setup', { path: '/:feeder_id' });
 });
 
 export default Router;

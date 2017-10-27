@@ -1,12 +1,22 @@
 <div class="col-lg-4 col-md-6 col-sm-12">
     <div class="panel {{panelType}} panel--selectable">
         <div class="panel-heading" {{action 'show'}}>
-            <b>{{feeder.nickname}}</b> - Nível de ração: <b>{{parse-nivel feeder.nivel}}</b>
+            <b>
+              {{#if feeder.nickname}}
+                {{feeder.nickname}}
+              {{else}}
+                Sem nome
+              {{/if}}
+            </b> - Nível de ração: <b>{{parse-nivel feeder.nivel}}</b>
         </div>
         <div class="panel-body">
           <div class="form-group" style="margin: 0">
-              Tanque:
-              <label>{{feeder.tank.name}}</label>
+              {{#if feeder.needSetup}}
+                Configure esse alimentador
+              {{else}}
+                Tanque:
+                <label>{{feeder.tank.name}}</label>
+              {{/if}}
           </div>
         </div>
         <div class="panel-footer footer-actions">

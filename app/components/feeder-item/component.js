@@ -27,7 +27,11 @@ export default Ember.Component.extend({
     },
 
     show() {
-      this.get('router').transitionTo('feeder.show', this.get('feeder'))
+      if (this.get('feeder.needSetup')) {
+        this.get('router').transitionTo('feeder.edit', this.get('feeder.id'))
+      } else {
+        this.get('router').transitionTo('feeder.show', this.get('feeder.id'))
+      }
     }
   }
 });

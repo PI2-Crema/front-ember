@@ -7,13 +7,30 @@
           <div class="panel-body">
               <div class="row">
                   <div class="col-lg-6">
-                      <form role="form" {{action "save" model on="submit"}}>
+                      <form role="form" {{action "save" model.tank model.cluster on="submit"}}>
                           <div class="form-group">
                               <label>Nome</label>
-                              {{input type="text" value=model.name class="form-control" placeholder="Nome do tanque"}}
+                              {{input type="text" value=model.tank.name class="form-control" placeholder="Nome do tanque"}}
+                          </div>
+                          <div class="form-group">
+                            <label>Tipo do peixe</label>
+                            {{#power-select
+                              options=model.fishs
+                              selected=model.cluster.fishType
+                              onchange=(action (mut model.cluster.fishType))
+                              as |fish|
+                            }}
+                               <strong>{{fish.name}}</strong>
+                            {{/power-select}}
+                          </div>
+                          <div class="form-group">
+                            <label>Quantidade</label> {{input type="number" value=model.cluster.total class="form-control" placeholder="Nome do peixe"}}
+                          </div>
+                          <div class="form-group">
+                            <label>Peso na estocagem (Kg)</label> {{input type="number" step="0.01" value=model.cluster.initialWeight class="form-control" placeholder=""}}
                           </div>
                           <button type="submit" class="btn btn-default">Cadastrar</button>
-                      </form>
+                        </form>
             </div>
         </div>
       </div>
