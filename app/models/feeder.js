@@ -2,26 +2,26 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   nickname: DS.attr('string'),
-  food_level: DS.attr('number', {defaultValue: 0}),
-  batery_level: DS.attr('number', {defaultValue: 0}),
+  foodLevel: DS.attr('number', {defaultValue: 0}),
+  batteryLevel: DS.attr('number', {defaultValue: 0}),
   tank: DS.belongsTo('tank', { inverse: null }),
   sensors: DS.hasMany('sensor'),
   networkCode: DS.attr('number'),
   needSetup: DS.attr('boolean', {defaultValue: true}),
   consumptions: DS.hasMany('consumption'),
 
-  nivel: Ember.computed('food_level', function() {
-    var food_level = this.get('food_level')
+  nivel: Ember.computed('foodLevel', function() {
+    var foodLevel = this.get('foodLevel')
 
-    if (food_level < 20) {
+    if (foodLevel < 20) {
       return 'low'
     }
 
-    if (food_level < 70) {
+    if (foodLevel < 70) {
       return 'medium'
     }
 
-    if (food_level <= 100) {
+    if (foodLevel <= 100) {
       return 'height'
     }
   })
