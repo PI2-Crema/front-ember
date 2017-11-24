@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ENV from '../../config/environment';
 
 export default Ember.Route.extend({
 
@@ -10,7 +11,7 @@ export default Ember.Route.extend({
 
   actions: {
     sendSettings(feeder) {
-      Ember.$.get('http://localhost:3000/feeders/send_settings/' + feeder.get('id'))
+      Ember.$.get(ENV.apiURL + '/feeders/send_settings/' + feeder.get('id'))
     },
 
     showLot(id) {
