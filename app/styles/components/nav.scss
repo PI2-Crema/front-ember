@@ -1,0 +1,19 @@
+.nav-bar {
+  background: #367FCC;
+  font-family: $futura-bold;
+}
+
+.text-color {
+  color: #fff !important;
+}
+
+
+.navbar-default {
+  .navbar-nav {
+    li {
+      a{
+        color: #fff;
+      }
+    }
+  }
+}

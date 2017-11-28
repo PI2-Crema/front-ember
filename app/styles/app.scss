@@ -1,3 +1,20 @@
+@font-face {
+  font-family: "futura-bold";
+  src: url("./fonts/futura_bold/LTe50154.eot");
+  src: url("./fonts/futura_bold/LTe50154.eot") format("embedded-opentype"), url("./fonts/futura_bold/LTe50154.woff2") format("woff2"), url("./fonts/futura_bold/LTe50154.woff") format("woff"), url("./fonts/futura_bold/LTe50154.ttf") format("truetype"), url("./fonts/futura_bold/LTe50154.svg#LTe50154") format("svg");
+}
+@font-face {
+  font-family: "futura-book";
+  src: url("./fonts/futura_book/LTe50152.eot");
+  src: url("./fonts/futura_book/LTe50152.eot") format("embedded-opentype"), url("./fonts/futura_book/LTe50152.woff2") format("woff2"), url("./fonts/futura_book/LTe50152.woff") format("woff"), url("./fonts/futura_book/LTe50152.ttf") format("truetype"), url("./fonts/futura_book/LTe50152.svg#LTe50152") format("svg");
+}
+
+
+$futura-bold: 'futura-bold';
+$futura-book: 'futura-book';
+$myriad-pro: Myriad Pro;
+$helvetica: Helvetica;
+
 @import 'bootstrap';
 @import "ember-power-select";
 @import "ember-modal-dialog/ember-modal-structure";
@@ -10,7 +27,7 @@
 @import 'components/titles.scss';
 @import 'components/panel.scss';
 @import 'components/no_data.scss';
-
+@import 'components/nav.scss';
 
 .fa-80x {
   font-size: 80px;
@@ -52,4 +69,44 @@ a {
 
 table.table-middle > tbody > tr > td {
      vertical-align: middle;
+}
+
+body {
+  font-family: $futura-book !important;
+}
+
+.feeder_alert {
+  background: #EA6844;
+  padding: 11px;
+  position: absolute;
+  right: 15px;
+  top: 0;
+  border-radius: 3px;
+  animation: colorChange 1s infinite;
+}
+
+@keyframes colorChange {
+  0%   {background: #EA6844;}
+  50%   {background:#FB9D1B;}
+  100%   {background: #EA6844;}
+}
+
+.pie-chart-title {
+  font-family: $futura_book;
+  font-size: 15px;
+  text-align: center;
+}
+
+.pie-chart-info {
+  font-family: $futura_bold;
+  font-size: 30px;
+  text-align: center;
+}
+
+.dropdown-menu {
+  li {
+    a {
+      color: #333333 !important;
+    }
+  }
 }

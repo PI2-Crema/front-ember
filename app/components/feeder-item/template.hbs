@@ -8,14 +8,20 @@
                 Sem nome
               {{/if}}
             </b> - Nível de ração: <b>{{parse-nivel feeder.nivel}}</b>
+            {{#if feeder.needSetup}}
+              <div class="feeder_alert">
+                {{b-icon name='glyphicon-alert'}}
+              </div>
+            {{/if}}
         </div>
         <div class="panel-body">
           <div class="form-group" style="margin: 0">
               {{#if feeder.needSetup}}
                 Configure esse alimentador
               {{else}}
-                Tanque:
-                <label>{{feeder.tank.name}}</label>
+                <p>Tanque: <label>{{feeder.tank.name}}</label></p>
+                <p>Peixe: <label>{{feeder.tank.currentTypeName}}</label></p>
+                <p>Número de pexies: <label>{{feeder.tank.numberOfFish}}</label></p>
               {{/if}}
           </div>
         </div>

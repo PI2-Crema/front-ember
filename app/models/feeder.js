@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
   nickname: DS.attr('string'),
@@ -9,6 +10,7 @@ export default DS.Model.extend({
   networkCode: DS.attr('number'),
   needSetup: DS.attr('boolean', {defaultValue: true}),
   consumptions: DS.hasMany('consumption'),
+  // feederClocks: DS.hasMany('feederClock'),
 
   nivel: Ember.computed('foodLevel', function() {
     var foodLevel = this.get('foodLevel')

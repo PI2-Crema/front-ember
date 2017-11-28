@@ -15,8 +15,8 @@ export default Ember.Component.extend({
     var canvas  = this.$().find('canvas')[0];
     var context = canvas.getContext('2d');
 
-    canvas.width  = $(canvas).parent().width();
-    canvas.height = $(canvas).parent().height() < 300 ? 300 : $(canvas).parent().height();
+    canvas.width  = Ember.$(canvas).parent().width();
+    canvas.height = Ember.$(canvas).parent().height() < 300 ? 300 : Ember.$(canvas).parent().height();
 
     var type = this.get('type').charAt(0).toUpperCase() + this.get('type').slice(1);
     if(!type.match(/(Line|Bar|Radar|PolarArea|Pie|Doughnut)/)) type = "Line";

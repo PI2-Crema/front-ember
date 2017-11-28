@@ -29,6 +29,7 @@ Router.map(function() {
     this.route('show', { path: '/show/:feeder_id' });
     this.route('edit', { path: '/edit/:feeder_id' });
     this.route('new');
+    this.route('settings', { path: '/settings/:feeder_id' });
   });
   this.route('sensor', function() {
     this.route('show', { path: '/show/:sensor_id' });
